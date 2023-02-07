@@ -37,7 +37,7 @@ function playRound(playerSelection, computerSelection) {
     playerSelection == 'scissor' && computerSelection == 'rock' ||
     playerSelection == 'paper' && computerSelection == 'scissors') {
         computerScore++;
-        result = (`You lose! ${computerSelection} beats ${playerSelection}.<br><br>Player score: ${playerScore}<br>Computer score: ${computerScore}`);
+        result = (`You lose! ${playerSelection} beats ${computerSelection}.<br><br>Player score: ${playerScore}<br>Computer score: ${computerScore}`);
     } else if (playerSelection == 'rock' && computerSelection == 'scissors' ||
     playerSelection == 'scissor' && computerSelection == 'paper' ||
     playerSelection == 'paper && computerSelection == rock') {
@@ -50,6 +50,7 @@ document.getElementById("result").innerHTML = result;
 return;
 }
 
+//fix this!!
 function getWinner(playerScore, computerScore) {
     if (playerScore > computerScore) {
     finalResult = "You Won!"
