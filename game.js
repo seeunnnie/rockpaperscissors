@@ -9,20 +9,22 @@ const rockButton = document.getElementById('rock');
 rockButton.addEventListener('click', () => {
 buttonPressed = 'rock';
 playRound();
+getWinner();
 });
 
 const paperBtn = document.querySelector('#paper');
 paperBtn.addEventListener('click', () => {
 buttonPressed = 'paper';
 playRound();
+getWinner();
 });
 
 const scissorsBtn = document.querySelector('#scissor');
 scissorsBtn.addEventListener('click', () => {
 buttonPressed = 'scissor';
 playRound();
+getWinner();
 });
-
 
 //function to get computer's choice
 function getComputerChoice() {
@@ -37,32 +39,37 @@ function playRound(playerSelection, computerSelection) {
     playerSelection == 'scissor' && computerSelection == 'rock' ||
     playerSelection == 'paper' && computerSelection == 'scissors') {
         computerScore++;
+        getWinner();
         result = (`You lose! ${playerSelection} beats ${computerSelection}.<br><br>Player score: ${playerScore}<br>Computer score: ${computerScore}`);
     } else if (playerSelection == 'rock' && computerSelection == 'scissors' ||
     playerSelection == 'scissor' && computerSelection == 'paper' ||
     playerSelection == 'paper && computerSelection == rock') {
         playerScore++;
+        getWinner();
         result = (`You win! ${playerSelection} beats ${computerSelection}.<br><br>Player score: ${playerScore}<br>Computer score: ${computerScore}`);
     } else if (playerSelection == computerSelection) {
         result = (`It\'s a tie! You both chose ${playerSelection}.<br><br>Player score: ${playerScore}<br>Computer score: ${computerScore}`);
+        getWinner();
     }
 document.getElementById("result").innerHTML = result;
 return;
 }
 
-//fix this!!
-function getWinner(playerScore, computerScore) {
-    if (playerScore > computerScore) {
-    finalResult = "You Won!"
-    document.getElementById("finalResult").innerHTML = finalResult;
+//fix this
+function getWinner(){
+    if (playerScore == 5) {
+        document.getElementById("finalResult").innerHTML = "You won!";
+        document.getElementById("rock").disabled = true;
+        document.getElementById("scissor").disabled = true;
+        document.getElementById("paper").disabled = true;
     } 
-    if (computerScore > playerScore) {
-        finalResult = "You Lost!"
-        document.getElementById("finalResult").innerHTML = finalResult;
+    if (computerScore == 5) {
+        document.getElementById("finalResult").innerHTML = "You lost!";
+        document.getElementById("rock").disabled = true;
+        document.getElementById("scissor").disabled = true;
+        document.getElementById("paper").disabled = true;
     }
 }
-
-
 
 
 /*function game() {
